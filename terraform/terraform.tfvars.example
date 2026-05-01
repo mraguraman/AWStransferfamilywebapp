@@ -1,0 +1,31 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# Do NOT commit terraform.tfvars to source control — it may contain sensitive data.
+
+aws_region   = "us-east-1"
+project_name = "secure-transfer"
+environment  = "dev"
+
+# Leave empty to auto-generate: secure-transfer-files-<account-id>
+s3_bucket_name = ""
+
+# Each provisioned unit supports 250 concurrent user sessions
+web_app_provisioned_units = 1
+
+# Add users who need access to the web app.
+# These will be created in IAM Identity Center and assigned the TransferWebAppAccess permission set.
+transfer_users = [
+  {
+    display_name = "John Doe"
+    user_name    = "john.doe"
+    email        = "john.doe@example.com"
+    given_name   = "John"
+    family_name  = "Doe"
+  },
+  {
+    display_name = "Jane Smith"
+    user_name    = "jane.smith"
+    email        = "jane.smith@example.com"
+    given_name   = "Jane"
+    family_name  = "Smith"
+  }
+]
